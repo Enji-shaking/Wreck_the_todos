@@ -1,0 +1,18 @@
+.container{
+    /* margin:auto; */
+    height: 100vh;
+}
+h2{
+    font-size: calc(2vw+12px);
+}
+
+.wrapper{
+    font-size: calc(2vw+5px);
+    padding: 15%;
+    border-radius: 25%;
+    background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
+    -webkit-box-shadow: 24px 18px 53px -7px rgba(122,122,122,1);
+    -moz-box-shadow: 24px 18px 53px -7px rgba(122,122,122,1);
+    box-shadow: 24px 18px 53px -7px rgba(122,122,122,1);
+}
+

@@ -1,0 +1,10 @@
+.deleteCategory{
+    position: absolute;
+    right: 0;
+}
+.nav-link{
+    color: black;
+}
+#addCategoryItem{
+    width: 90%;
+}
