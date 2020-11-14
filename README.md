@@ -3,6 +3,7 @@
 
 When use it, make sure to add a "config.php" file under the "util" folder. The format should be as below
 
+```
 <?php
     function connect(){
         return new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
@@ -13,5 +14,6 @@ When use it, make sure to add a "config.php" file under the "util" folder. The f
     define("DBPASS", "YOUR DATABASE");
     define("DBNAME", "YOUR PASSWORD");
 ?>
+```
 
   Just so you know, because this app utilizes some packages through CDN and JQUERY, if you locate in China, you might need to use a VPN(proxy) to correct use it.
