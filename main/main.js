@@ -149,8 +149,6 @@ $('#updateForm').submit(function (e) {
         toBeChange = null;
     });
 
-
-
     $('#modal').modal('toggle');
     
 });
@@ -166,7 +164,13 @@ $('#inputTask').submit(function (e) {
         $("#alertNoTitle").removeClass("d-none");
         return;
     }
-    $("#alertNoTitle").addClass("d-none");
+    $("#alertNoCategory").addClass("d-none");
+    if(values["idcategory"].trim().length === 0){
+        $("#alertNoCategory").removeClass("d-none");
+        return;
+    }
+    $("#alertNoCategory").addClass("d-none");
+
     $.ajax({
         type: "post",
         url: "../util/update_database.php",
@@ -200,9 +204,7 @@ $('#inputTask').submit(function (e) {
             </div>
         </div>`;
 
-            // <div class="detail" style="display:none;">
-            //     ${res.description}
-            // </div>
+
         $('#incompletePanel').prepend(item);
         $('#title').val('');
         $('#descriptionTextArea').val('');

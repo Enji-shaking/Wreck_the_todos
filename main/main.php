@@ -68,8 +68,6 @@
 <body>
     <?php include '../util/topNav.php'; ?>
 
-    
-    
     <div class="container-fluid canvas">
         <!-- Modal -->
         <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -163,6 +161,9 @@
                         <div class="alert alert-dark d-none w-100 p-3" role="alert" id="alertNoTitle">
                             Must enter a title!
                         </div>
+                        <p class="alert alert-dark w-75 m-auto mt-3 text-center d-none" role="alert" id="alertNoCategory">
+                            Must create a list first!
+                        </p>
                         <input type="date" class="form-control mt-2" name="duedate" id="duedate">
                         <div id="description" class="align-items-end" >
                             <textarea name="description" rows="5" cols="45" placeholder="Put specific description here" id="descriptionTextArea"></textarea>
