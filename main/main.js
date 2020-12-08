@@ -9,7 +9,12 @@ $(document).ready(function () {
     $('#description').hide();
     $('.detail').hide();
     const date = new Date();
-    const time = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+    let time;
+    if(parseInt(date.getDate())<10){
+        time = date.getFullYear() + "-" + (date.getMonth()+1) + "-0" + date.getDate();
+    }else{
+        time = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+    }
     $('#duedate').val(time);
     retrieveAllSelect('category');
 });
