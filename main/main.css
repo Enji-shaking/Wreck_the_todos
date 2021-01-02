@@ -1,8 +1,17 @@
-@media (max-width: 797px){
-    .text,#addCategoryItem,.deleteCategory{
+@media (max-width: 767px){
+    .leftGroup {
         display: none;
     }
 }
+
+#sm-add-categories {
+    display: none;
+}
+
+#detailTitle + .close:hover {
+    background-color: lightgray;
+}
+
 h5{
     font-size: calc(2vw + 15px);
 }
@@ -25,10 +34,7 @@ h4{
 
 
 
-/* .rightGroup{
-    background-color: rgb(203, 252, 255);
-    /* transition: 5s; */
-} */
+
 .right-footer{
     position: absolute;
     width: 100%;
@@ -48,7 +54,7 @@ hr{
     transition-duration: 0.6s;
 }
 
-.completed{
+.completed span {
     color: darkcyan;
     text-decoration: line-through;
 }
@@ -75,8 +81,6 @@ hr{
 .delete{
     color: darkcyan;
     text-decoration: line-through;
-    position: absolute;
-    right: 3px;
 }
 .taska{
     color: inherit;
@@ -88,3 +92,24 @@ hr{
     width: 100%;
     /* width: ; */
 }
+
+.fas, .far {
+    margin-right: 3px;
+}
+
+.categorytask {
+    padding-left: .5rem;
+}
+
+.duedate {
+    padding-right: .5rem;
+    white-space: nowrap;
+}
+
+.titletask, .categorytask {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+

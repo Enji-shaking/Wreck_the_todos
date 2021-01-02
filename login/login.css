@@ -2,17 +2,28 @@
     /* margin:auto; */
     height: 100vh;
 }
-h2{
-    font-size: calc(2vw+12px);
+h2 {
+    font-size: calc(2vw + 12px);
 }
 
-.wrapper{
+h2 div:first-child, h1 div:first-child {
+    font-size: calc(3vw + 15px);
+    font-family: Monofett;
+}
+
+.wrapper {
     font-size: calc(2vw+5px);
-    padding: 15%;
-    border-radius: 25%;
+    padding: 6% 10% 8% 10%;
+    border-radius: 50px;
     background-image: linear-gradient(to top, #f3e7e9 0%, #e3eeff 99%, #e3eeff 100%);
     -webkit-box-shadow: 24px 18px 53px -7px rgba(122,122,122,1);
     -moz-box-shadow: 24px 18px 53px -7px rgba(122,122,122,1);
     box-shadow: 24px 18px 53px -7px rgba(122,122,122,1);
+}
+
+@media (max-width: 767px) {
+    .wrapper {
+        padding: 8% 13% 10% 13%;
+    }
 }
 

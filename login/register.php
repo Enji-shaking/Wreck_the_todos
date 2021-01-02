@@ -48,12 +48,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="icon" href="../favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
         integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="login.css">
+    <style type="text/css">
+        .container {
+            height: calc(100vh - 57.6px);
+        }
+    </style>
 </head>
 <body>
 
@@ -65,11 +71,12 @@ include "../util/topNav.php"
 <div>
     <div class="container w-80 d-flex align-items-center justify-content-center">
       <div class="wrapper">
-        <h1 class="row justify-content-center">
-          <span class="align-baseline"> Wreck the todos! </span> 
-          <span class="align-top"><i class="fas fa-check-circle"></i></span> 
-        </h1>
-        <h3>Registering...</h3>
+        <h2 class="d-flex justify-content-between align-items-stretch">
+            <div>Wreck the todos!&nbsp</div> 
+            <div class="d-flex flex-column justify-content-center"><i class="fas fa-check-circle"></i></div>
+        </h2>
+        <br>
+        <h4>Registering...</h4>
         <form action="#" id="myform" method="POST">
             <div class="form-group">
                 <label for="exampleInputEmail1">User Name</label>
@@ -104,7 +111,7 @@ include "../util/topNav.php"
     </div>
 </div>
 
-<script src="http://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous">
 </script>

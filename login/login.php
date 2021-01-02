@@ -49,6 +49,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../favicon.ico">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
@@ -61,10 +62,11 @@
     <div class="container w-80 d-flex align-items-center justify-content-center">
       <div class="wrapper">
         <div id="log-in-form">
-          <h2 class="row justify-content-center">
-            <span class="align-baseline"> Wreck the todos! </span> 
-            <span class="align-top"><i class="fas fa-check-circle"></i></span> 
-          </h2>
+          <h1 class="d-flex justify-content-between align-items-stretch">
+            <div>Wreck the todos!&nbsp</div> 
+            <div class="d-flex flex-column justify-content-center"><i class="fas fa-check-circle"></i></div>
+          </h1>
+          <br>
           <form action="#" method="POST">
             <div class="form-group">
               <label for="exampleInputEmail1">User Name</label>

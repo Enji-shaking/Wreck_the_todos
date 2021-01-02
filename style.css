@@ -1,8 +1,27 @@
+@font-face {
+	font-family: Monofett;
+	src: url("fonts/Monofett-Regular.ttf");
+}
+
+@font-face {
+	font-family: Vollkorn;
+	src: url("fonts/Vollkorn-VariableFont_wght.ttf");
+}
+
 body{
     margin: 0;
     padding: 0;
-    /* background-color: yellow; */
     background-image: linear-gradient(to top, #dad4ec 0%, #dad4ec 1%, #f3e7e9 100%);
     min-height: 100vh;
+    font-family: Vollkorn;
 }
 
+.brand-name {
+	font-family: Monofett;
+}
+
+@media(max-width: 767px) {
+	.username {
+		display: none;
+	}
+}

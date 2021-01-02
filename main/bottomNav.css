@@ -1,0 +1,50 @@
+.bottom {
+	background-color: #000;
+	color: #f3e7ea;
+	height: 50px;
+	width: 100%;
+	font-size: 25px;
+	padding: 0;
+	display: none;
+}
+
+.bottom > div {
+	width: 33.33%;
+	cursor: pointer;
+	margin: 0;
+	height: 100%;
+}
+
+.bottom > div:hover {
+	background-color: gray;
+}
+
+#select-list {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.5);
+	left: 0;
+	top: 0;
+	position: fixed;
+	display: none;
+}
+
+#select-list .content-wrapper {
+	margin-top: 10px;
+	height: calc(100% - 20px);
+	background-color: white;
+	padding: 15px;
+	border-radius: 15px;
+	width: 90%;
+}
+
+#sm-categories #list-options {
+	overflow-y: auto;
+}
+
+
+@media (max-width: 767px) {
+	.bottom {
+		display: flex;
+	}
+}

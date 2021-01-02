@@ -9,12 +9,12 @@ $(document).ready(function () {
     $('#description').hide();
     $('.detail').hide();
     const date = new Date();
-    let time;
-    if(parseInt(date.getDate())<10){
-        time = date.getFullYear() + "-" + (date.getMonth()+1) + "-0" + date.getDate();
-    }else{
-        time = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
-    }
+    const time = date.getFullYear() + "-" + 
+        ((date.getMonth()+1)<10?"0":"") +
+        ((date.getMonth()+1) + "-") +
+        (date.getDate()<10?"0":"") + 
+        date.getDate();
+
     $('#duedate').val(time);
     retrieveAllSelect('category');
 });
@@ -22,7 +22,11 @@ $(document).ready(function () {
 $('.plusToggle').click(function (e) { 
     e.preventDefault();
     $('#description').toggleClass('d-flex');
-    $('#description').slideToggle();
+    if ($(window).width() > 767) {
+        $('#description').slideToggle();
+    } else {
+        $('#description, #sm-add-categories').slideToggle();
+    }
 });
 
 // Manipulate items
@@ -33,7 +37,6 @@ $('.canvas').on('click', '.taskitem', displayingDetail);
 
 function completing(e) {
     e.stopPropagation();
-    console.log("love");
     const completed = $(this).parent().hasClass('completed')?1:0;
     if(!completed){
         $('#completedPanel').prepend($(this).parent().parent().parent());
@@ -45,8 +48,8 @@ function completing(e) {
         $('#numIncompleted').html(parseInt($('#numIncompleted').html())+1);
     }
     $(this).parent().toggleClass('completed');
-    $(this).toggleClass('far');
-    $(this).toggleClass('fas');
+    $(this).toggleClass('far fa-square');
+    $(this).toggleClass('fas fa-check-square');
     $.ajax({
         type: "post",
         url: "../util/update_database.php",
@@ -56,7 +59,7 @@ function completing(e) {
             function: "completeTask"
         }
     }).done(res=>{
-        // console.log(res);
+
     }).fail(res=>{
         console.log(res.responseText);
     })
@@ -78,7 +81,7 @@ function deleting(e) {
            function: "deleteTask"
        }
    }).done(res=>{
-        // console.log(res);
+    
    }).fail(res=>{
     console.log(res.responseText);
 })
@@ -86,12 +89,8 @@ function deleting(e) {
 var toBeChange = null;
 function displayingDetail(e) { 
     toBeChange = this;
-    // console.log(this);
-    // console.log(this.getElementsByClassName("titletask"));
-    // console.log(this.getElementsByClassName("duedate"));
     retrieveAllSelect('updateCategories');
     const idtask = this.getElementsByClassName("idtask")[0].innerText;
-    console.log(idtask);
     $.ajax({
         type: "post",
         url: "../util/update_database.php",
@@ -100,8 +99,6 @@ function displayingDetail(e) {
             function: 'getTask'
         }
     }).done(res=>{
-        // console.log(res);
-        // console.log(JSON.parse(res));
         res = JSON.parse(res);
         $('#updateTaskId').val(res.idtask);
         $('#updateTitle').val(res.title);
@@ -110,12 +107,8 @@ function displayingDetail(e) {
         $('#updateCategories').val(res.idcategory);
     }).fail(res=>{
         console.log(res.responseText);
-    })
-    ;
-    // console.log(this.getElementsByClassName("idcategory")[0].defaultValue.trim());
-    // console.log(this.getElementsByClassName("duedate")[0].innerText);
-    // console.log(this.getElementsByClassName("taskdescription")[0].innerText.trim());
- }
+    });
+}
 
 $('#updateForm').submit(function (e) { 
     e.preventDefault();
@@ -124,7 +117,6 @@ $('#updateForm').submit(function (e) {
     $.each($('#updateForm').serializeArray(), function(i, field) {
         values[field.name] = field.value;
     });
-    console.log(values);
     if(values["title"].trim().length === 0){
         $("#alertNoTitleUpdate").removeClass("d-none");
         return;
@@ -143,14 +135,10 @@ $('#updateForm').submit(function (e) {
         }
     }).done(res=>{
         res = JSON.parse(res);
-        // console.log(res);
-        // console.log(toBeChange);
-        // console.log(toBeChange.getElementsByClassName("titletask"));
         toBeChange.getElementsByClassName("titletask")[0].innerText = res.title;
         toBeChange.getElementsByClassName("duedate")[0].innerText = res.duedate;
         toBeChange.getElementsByClassName("categorytask")[0].innerText = res.category;
         toBeChange.getElementsByClassName("taskdescription")[0].innerText = res.description;
-        // console.log(toBeChange);
         toBeChange = null;
     });
 
@@ -187,17 +175,16 @@ $('#inputTask').submit(function (e) {
             duedate: values["duedate"]
         }
     }).done(res=>{
-        // console.log(res);
         res = JSON.parse(res);
         let item = `
         <div>
-            <div class="taskitem" data-toggle="modal" data-target="#modal" type="button">
+            <div class="taskitem" data-toggle="modal" data-target="#modal">
                 <input type="hidden" class="idcategory" value="${res.idcategory} " >
-                <div class="p-2">
+                <div class="p-2 d-flex flex-row align-items-center">
                     <span class="d-none idtask"> ${res.idtask} </span> 
-                    <i class="far fa-check-square check"></i>
-                    <span class="titletask">${res.title}</span>
-                    <a type="button" class="btn btn-sm delete"> <i class="fas fa-eraser"></i> </a>
+                    <i class="far fa-square check"></i>
+                    <span class="titletask flex-grow-1">${res.title}</span>
+                    <a type="button" class="btn btn-sm btn-outline-info delete"> <i class="fas fa-eraser"></i> </a>
                 </div>
                 <div class="category d-flex justify-content-end">
                     <span class="categorytask">${(res.category == null?"":res.category)}</span>
@@ -219,3 +206,54 @@ $('#inputTask').submit(function (e) {
     })
 });
 
+$(window).on('resize', function() {
+    if ($(window).width() > 767) {
+        $('#sm-add-categories').slideUp();
+        $('#select-list').modal('hide');
+    } else {
+        if ($('#description').css('display') != "none") {
+            $('#sm-add-categories').slideDown();
+        }
+    }
+});
+
+$('#sm-add-categories').submit(function (e) { 
+    e.preventDefault();
+    const value = $("#sm-new-category").val().trim();
+    if(value.length === 0){
+        $("#sm-add-categories .alert").removeClass("d-none");
+        return;
+    }
+    $("#sm-add-categories .alert").addClass("d-none");
+    $.ajax({
+        type: "post",
+        url: "../util/update_database.php",
+        data:  {
+            function: "insertCategory",
+            category: value,
+        }
+    }).done(res=>{
+            $("#sm-new-category").val('');
+            const item = 
+            `<option value="${res}">
+            ${value}
+            </option>`;
+            $('#category').append(item);
+
+            const item2 = 
+            `<a class="nav-link " href="#">
+            <i class="fas fa-eraser btn btn-sm deleteCategory"></i>
+            <i class="fas fa-bullseye"></i>
+            <span class="text"> ${value} </span>
+            <p class="d-none idcategory"> ${res} </p>
+            </a>`;
+            $('#leftNavCategories').append(item2);
+
+            let count = $('input[name=list]').length + 1;
+            const radio = `<div class="form-check"><input class="form-check-input" type="radio" name="list" id="list${count}" value="${res}"><label class="form-check-label" for="list${count}">${value}</label></div>`;
+            $("#list-options").append(radio);
+
+    }).fail(res=>{
+            console.log(res.statusText);
+    })
+});

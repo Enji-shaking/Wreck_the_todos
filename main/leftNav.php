@@ -1,11 +1,11 @@
 
 <nav class="nav flex-column nav-tabs navbar-expand-lg flex-shirnk-1">
   <a class="nav-link" id="today"><i class="fas fa-sun"></i>  <span class="text"> Today </span>  </a>
-  <a class="nav-link" id="nextSeven"><i class="fas fa-star"></i>  <span class="text"> Next Seven Days </span>  </a>
+  <a class="nav-link" id="nextSeven"><i class="fas fa-star"></i>  <span class="text"> Next 7 Days </span>  </a>
   <a class="nav-link" id="allTask"><i class="fas fa-tasks"></i>  <span class="text"> All Tasks </span>  </a>
   <hr>
   <form id="addCategory">
-    <input id="addCategoryItem" class="" type="text" maxlength="100" placeholder="New list" value="">
+    <input id="addCategoryItem" class="" type="text" maxlength="100" placeholder="New category" value="">
   </form>
   <h6 class="alert text-danger font-italic p-1 font-size-12 d-none" role="alert" id="alertNoCategoryName">
       * Must enter a name for the category!

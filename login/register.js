@@ -1,10 +1,7 @@
-console.log("ccc");
 $('#myform').submit(function (e) { 
-    console.log("123");
     let pass1 = $("#password1").val().trim();
     let pass2 = $("#password2").val().trim();
     let username = $("#username").val().trim();
-    // console.log($("#username"));
     if(username===""){
         e.preventDefault();
         $("#error1").removeClass("d-none");
