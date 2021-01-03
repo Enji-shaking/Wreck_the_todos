@@ -95,14 +95,12 @@ $('#sm-categories .btn-outline-danger').on('click', function (e) {
 });
 
 $('.bottom div:nth-child(4)').click(function (e) {
-    console.log(e);
     $("#sm-categories").css('visibility', 'hidden');
     $('#select-list .modal-header').outerHeight(56);
     $('#select-list').modal('show');
 });
 
 $('#select-list').on('shown.bs.modal', function (e) {
-    console.log(e);
     let bottomHeight = $('#select-list .modal-content').height() - 56;
     $('#select-list .modal-body').outerHeight(bottomHeight);
     let formHeight = $('#select-list .modal-body').height();
